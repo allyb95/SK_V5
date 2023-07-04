@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundara Karma tour</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="loader"></div>
+    <img src="img/story.png" alt="" class="poster">
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <section id="content" class="tour-section-img">
+    <img src="img/SL LOGO LOWREZ2.png" alt="" class="main_logo_tour">
+    <h1>Tour Dates</h1>
+    <h2>2023</h2>
+    <div class="tour-container">
+      <div id="seated-55fdf2c0" data-artist-id="93990b4d-0a95-40ee-892f-bf69631b3bdf" data-css-version="3"></div>
+    </div>
+  </section>
+
+  <script src="https://widget.seated.com/app.js"></script>
+
+  <script>
+window.addEventListener('load', function() {
+  const loadingScreen = document.getElementById('loading-screen');
+  const contentSection = document.getElementById('content');
+
+  // Show the loading screen
+  loadingScreen.style.opacity = '1';
+
+  // Hide the loading screen and show the content section after a delay
+  setTimeout(function() {
+    loadingScreen.style.opacity = '0';
+
+    // Set the loading screen's z-index to -9 after the transition
+    setTimeout(function() {
+      loadingScreen.style.zIndex = '-9';
+      contentSection.style.zIndex = 'auto'; // Reset z-index for content section
+    }, 250);
+  }, 1000);
+
+  // Show the content section after the loading screen transition
+  setTimeout(function() {
+    contentSection.style.opacity = '1';
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          contentSection.style.animation = 'slideInFromBottom 2s ease-out forwards';
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    observer.observe(contentSection);
+  }, 2000);
+});
+
+
+  </script>
+</body>
+</html>
+  
